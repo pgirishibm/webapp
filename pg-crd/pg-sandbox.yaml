@@ -1,0 +1,37 @@
+apiVersion: org.eclipse.che/v1
+kind: CheCluster
+metadata:
+  name: playground-dev-cluster
+spec:
+  k8s:
+    ingressDomain: 'api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud'
+    tlsSecretName: ''
+  server:
+    cheImageTag: ''
+    devfileRegistryImage: ''
+    pluginRegistryImage: ''
+    tlsSupport: true
+    selfSignedCert: true
+    customCheProperties:
+      CHE_WORKSPACE_STORAGE_AVAILABLE__TYPES: "ephemeral"
+      CHE_WORKSPACE_STORAGE_PREFERRED__TYPE: "ephemeral"
+  database:
+    externalDb: false
+    chePostgresHostName: ''
+    chePostgresPort: ''
+    chePostgresUser: ''
+    chePostgresPassword: ''
+    chePostgresDb: ''
+  auth:
+    identityProviderImage: ''
+    externalIdentityProvider: false
+    identityProviderURL: ''
+    identityProviderRealm: ''
+    identityProviderClientId: ''
+  storage:
+    pvcStrategy: per-workspace
+    pvcClaimSize: 1Gi
+    preCreateSubPaths: true
+    postgresPVCStorageClassName: 'ibmc-file-gold-gid'
+  metrics:
+    enable: true
