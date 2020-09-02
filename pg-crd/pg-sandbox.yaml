@@ -12,7 +12,7 @@ spec:
     devfileRegistryPullPolicy: 'Always'
     pluginRegistryImage: ''
     tlsSupport: true
-    selfSignedCert: true
+    selfSignedCert: false
     customCheProperties:
       CHE_WORKSPACE_STORAGE_AVAILABLE__TYPES: "ephemeral"
       CHE_WORKSPACE_STORAGE_PREFERRED__TYPE: "ephemeral"
