@@ -8,7 +8,7 @@ spec:
     tlsSecretName: ''
   server:
     cheImageTag: ''
-    devfileRegistryImage: ''
+    devfileRegistryImage: 'us.icr.io/apihub-cr/che-devfile-registry:latest'
     pluginRegistryImage: ''
     tlsSupport: true
     selfSignedCert: false
