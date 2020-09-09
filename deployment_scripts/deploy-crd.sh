@@ -5,11 +5,12 @@ NAMESPACE=$2
 
 kubectl version --short
 
-echo "\n\n========== APPLYING THE BELOW CRD FILE in ${ENV} ENVIRONMENT=========="
+echo "========== APPLYING THE BELOW CRD FILE in ${ENV} ENVIRONMENT=========="
 cat ${ENV}/yaml/crd.yaml
-echo "\n\n"
+echo " "
 OUTPUT=`kubectl apply -f ${ENV}/yaml/crd.yaml -n ${NAMESPACE}`
-if [[ "${OUTPUT}" == "checluster.org.eclipse.che/${NAMESPACE} configured" ]] || [[ "${OUTPUT}" == "checluster.org.eclipse.che/${NAMESPACE} unchanged" ]]
+echo ${OUTPUT}
+if [[ "${OUTPUT}" == "checluster.org.eclipse.che/"*" configured" ]] || [[ "${OUTPUT}" == "checluster.org.eclipse.che/"*" unchanged" ]]
         then
 			echo "Successfully applied the CRD yaml file"
 		else
