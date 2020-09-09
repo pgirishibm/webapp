@@ -20,7 +20,8 @@ cat ${ENV}/yaml/crd.yaml
 echo "\n\n"
 kubectl apply -f ${ENV}/yaml/crd.yaml -n ${NAMESPACE}
 OUTPUT=`kubectl apply -f ${ENV}/yaml/crd.yaml -n ${NAMESPACE}`
-if [[ "${OUTPUT}" == "checluster.org.eclipse.che/${NAMESPACE} configured" ]] || [[ "${OUTPUT}" == "checluster.org.eclipse.che/${NAMESPACE} unchanged" ]]
+checluster.org.eclipse.che/playground-dev-cluster configured
+if [[ "${OUTPUT}" == "checluster.org.eclipse.che/"*" configured" ]] || [[ "${OUTPUT}" == "checluster.org.eclipse.che/"*" unchanged" ]]
         then
 			git config --global user.email 'apihub@in.ibm.com'
 			git config --global user.name 'apihub'
