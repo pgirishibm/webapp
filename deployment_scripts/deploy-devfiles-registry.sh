@@ -35,7 +35,7 @@ if [[ "${OUTPUT}" == "checluster.org.eclipse.che/"*" configured" ]] || [[ "${OUT
 			git config --global user.name 'apihub'
 			git add --all
 			git commit -m "updating devfiles tag in crd of ${ENV} environment"
-			git push https://${MYUSER}:${MYTOKEN}@github.ibm.com/ibm-api-marketplace/playground-resources.git HEAD:reorg -f
+			git push https://${MYUSER}:${MYTOKEN}@github.ibm.com/ibm-api-marketplace/playground-resources.git HEAD:master -f
 		else
 		    echo "Failed to deploy new build of devfiles registry"
 			exit 1
