@@ -12,13 +12,13 @@ currentimage=`kubectl get deployment devfile-registry -o=jsonpath='{$.spec.templ
 currenttag=${currentimage#*:}
 
 #fetch the new build to be deployed
-newtag=`cat ${ENV}/image-tags/devfiles_registry_latest.txt`
+newtag=`cat ${ENV}/image-tags/devfile-registry-latest.txt`
 
-#updating the crd.yaml and devfiles_registry_previous.txt
+#updating the crd.yaml and devfile-registry-previous.txt
 echo "Image to be deployed in devfiles registry is : us.icr.io/apihub-cr/che-devfile-registry:${newtag}"
 sed -i "s/che-devfile-registry:.*'/che-devfile-registry:${newtag}'/" "${ENV}/yaml/crd.yaml"
-true > ${ENV}/image-tags/devfiles_registry_previous.txt
-echo ${currenttag} > ${ENV}/image-tags/devfiles_registry_previous.txt
+true > ${ENV}/image-tags/devfile-registry-previous.txt
+echo ${currenttag} > ${ENV}/image-tags/devfile-registry-previous.txt
 
 echo "========== APPLYING THE BELOW CRD FILE =========="
 #print the updated crd.yaml content before applying
@@ -28,7 +28,7 @@ echo ""
 #applying the crd.yaml and reading the output of the command
 OUTPUT=`kubectl apply -f ${ENV}/yaml/crd.yaml -n ${NAMESPACE}`
 
-#if pass,checkin the crd.yaml and devfiles_registry_previous.txt changes else exit with failure
+#if pass,checkin the crd.yaml and devfile-registry-previous.txt changes else exit with failure
 if [[ "${OUTPUT}" == "checluster.org.eclipse.che/"*" configured" ]] || [[ "${OUTPUT}" == "checluster.org.eclipse.che/"*" unchanged" ]]
         then
 			git config --global user.email 'apihub@in.ibm.com'
