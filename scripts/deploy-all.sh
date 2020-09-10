@@ -5,7 +5,7 @@ NAMESPACE=$2
 
 kubectl version --short
 
-YAMLFILES=/${ENV}/yaml/*
+YAMLFILES=${ENV}/yaml/*.yaml
 for f in $YAMLFILES
 do
   echo "Processing $f file..."
