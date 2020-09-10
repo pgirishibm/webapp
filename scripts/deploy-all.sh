@@ -10,7 +10,7 @@ for f in $YAMLFILES
 do
   echo "Processing $f file..."
   OUTPUT=`kubectl apply -f $f -n ${NAMESPACE}`
-  cat ${OUTPUT}
+  echo ${OUTPUT}
   if [[ "${OUTPUT}" == *"configured" ]] || [[ "${OUTPUT}" == *"unchanged" ]]
         then
 			echo "Successfully applied the $f file"
@@ -18,5 +18,4 @@ do
 		    echo "Failed to apply the $f file"
 			exit 1
   fi
-  cat $f
-done
+ done
