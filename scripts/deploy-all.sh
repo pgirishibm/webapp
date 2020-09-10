@@ -9,7 +9,7 @@ YAMLFILES=${ENV}/yaml/*.yaml
 for f in $YAMLFILES
 do
   echo "Processing $f file..."
-  OUTPUT=`kubectl apply -f ${ENV}/yaml/$f -n ${NAMESPACE}`
+  OUTPUT=`kubectl apply -f $f -n ${NAMESPACE}`
   cat ${OUTPUT}
   if [[ "${OUTPUT}" == *"configured" ]] || [[ "${OUTPUT}" == *"unchanged" ]]
         then
