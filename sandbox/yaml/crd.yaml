@@ -16,6 +16,10 @@ spec:
     customCheProperties:
       CHE_WORKSPACE_STORAGE_AVAILABLE__TYPES: "ephemeral"
       CHE_WORKSPACE_STORAGE_PREFERRED__TYPE: "ephemeral"
+      CHE_WORKSPACE_DEFAULTMEMORYLIMIT__MB: "2048"
+      #CHE_WORKSPACE_DEFAULT__CPU__LIMIT__CORES: "5"
+      CHE_WORKSPACE_PROJECTS_STORAGE_DEFAULT_SIZE: "1Gi"
+
   database:
     externalDb: false
     chePostgresHostName: ''
