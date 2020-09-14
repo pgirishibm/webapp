@@ -14,6 +14,7 @@ spec:
     tlsSupport: true
     selfSignedCert: false
     customCheProperties:
+      CHE_INFRA_KUBERNETES_NAMESPACE_DEFAULT: "sandbox-ws-<username>"
       CHE_WORKSPACE_STORAGE_AVAILABLE__TYPES: "ephemeral"
       CHE_WORKSPACE_STORAGE_PREFERRED__TYPE: "ephemeral"
   database:
