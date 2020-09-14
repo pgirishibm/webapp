@@ -32,12 +32,6 @@ metadata:
     app: che
     component: che
 rules:
-  - verbs:
-      - create
-    apiGroups:
-      - project.openshift.io
-    resources:
-      - projectrequests
   - apiGroups:
       - ""
     resources:
@@ -57,7 +51,6 @@ rules:
       - get
       - create
     apiGroups:
-      - authorization.openshift.io
       - rbac.authorization.k8s.io
     resources:
       - roles
@@ -66,16 +59,9 @@ rules:
       - update
       - create
     apiGroups:
-      - authorization.openshift.io
       - rbac.authorization.k8s.io
     resources:
       - rolebindings
-  - verbs:
-      - get
-    apiGroups:
-      - project.openshift.io
-    resources:
-      - projects
   - verbs:
       - get
       - create
@@ -155,14 +141,6 @@ rules:
       - ''
     resources:
       - configmaps
-  - verbs:
-      - list
-      - create
-      - delete
-    apiGroups:
-      - route.openshift.io
-    resources:
-      - routes
   - verbs:
       - watch
     apiGroups:
