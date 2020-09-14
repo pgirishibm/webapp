@@ -1,0 +1,136 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /not-found
+  labels:
+    app: che
+    component: keycloak
+  name: keycloak-auth.disabled
+  namespace: sandbox
+spec:
+  rules:
+  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - backend:
+          serviceName: keycloak
+          servicePort: 8080
+        path: /auth
+  tls:
+  - hosts:
+    - api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    secretName: che-tls
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    app: che
+    component: keycloak
+  name: keycloak-auth-js
+  namespace: sandbox
+spec:
+  rules:
+  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - backend:
+          serviceName: keycloak
+          servicePort: 8080
+        path: /auth/js
+  tls:
+  - hosts:
+    - api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    secretName: che-tls
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    app: che
+    component: keycloak
+  name: keycloak-auth-resources
+  namespace: sandbox
+spec:
+  rules:
+  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - backend:
+          serviceName: keycloak
+          servicePort: 8080
+        path: /auth/resources
+  tls:
+  - hosts:
+    - api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    secretName: che-tls
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    app: che
+    component: keycloak
+  name: keycloak-auth-realms-che-login-actions
+  namespace: sandbox
+spec:
+  rules:
+  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - backend:
+          serviceName: keycloak
+          servicePort: 8080
+        path: /auth/realms/che/login-actions
+  tls:
+  - hosts:
+    - api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    secretName: che-tls
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    app: che
+    component: keycloak
+  name: keycloak-auth-realms-che-protocol-openid-connect
+  namespace: sandbox
+spec:
+  rules:
+  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - backend:
+          serviceName: keycloak
+          servicePort: 8080
+        path: /auth/realms/che/protocol/openid-connect
+  tls:
+  - hosts:
+    - api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+    secretName: che-tls
+
