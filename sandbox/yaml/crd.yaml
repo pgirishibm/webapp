@@ -8,7 +8,7 @@ spec:
     tlsSecretName: ''
   server:
     cheImageTag: ''
-    devfileRegistryImage: 'us.icr.io/apihub-cr/che-devfile-registry:master-2020-09-16T12.10.19Z'
+    devfileRegistryImage: 'us.icr.io/apihub-cr/che-devfile-registry:master-2020-09-16T12.18.30Z'
     devfileRegistryPullPolicy: 'Always'
     pluginRegistryImage: ''
     tlsSupport: true
