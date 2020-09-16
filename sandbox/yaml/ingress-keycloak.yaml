@@ -11,10 +11,10 @@ metadata:
     app: che
     component: keycloak
   name: keycloak-auth.disabled
-  namespace: sandbox
+  namespace: playground-dev
 spec:
   rules:
-  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+  - host: keycloak-playground-dev.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
     http:
       paths:
       - backend:
@@ -38,10 +38,10 @@ metadata:
     app: che
     component: keycloak
   name: keycloak-auth-js
-  namespace: sandbox
+  namespace: playground-dev
 spec:
   rules:
-  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+  - host: keycloak-playground-dev.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
     http:
       paths:
       - backend:
@@ -65,10 +65,10 @@ metadata:
     app: che
     component: keycloak
   name: keycloak-auth-resources
-  namespace: sandbox
+  namespace: playground-dev
 spec:
   rules:
-  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+  - host: keycloak-playground-dev.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
     http:
       paths:
       - backend:
@@ -92,10 +92,10 @@ metadata:
     app: che
     component: keycloak
   name: keycloak-auth-realms-che-login-actions
-  namespace: sandbox
+  namespace: playground-dev
 spec:
   rules:
-  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+  - host: keycloak-playground-dev.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
     http:
       paths:
       - backend:
@@ -119,10 +119,10 @@ metadata:
     app: che
     component: keycloak
   name: keycloak-auth-realms-che-protocol-openid-connect
-  namespace: sandbox
+  namespace: playground-dev
 spec:
   rules:
-  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+  - host: keycloak-playground-dev.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
     http:
       paths:
       - backend:

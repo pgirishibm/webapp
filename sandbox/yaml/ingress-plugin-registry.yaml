@@ -11,10 +11,10 @@ metadata:
     app: che
     component: plugin-registry
   name: plugin-registry
-  namespace: sandbox
+  namespace: playgraound-dev
 spec:
   rules:
-  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
+  - host: keycloak-playgraound-dev.api-hub-dev-d4b80535626182c66d855ee969650fc9-0005.us-south.containers.appdomain.cloud
     http:
       paths:
       - backend:
@@ -38,10 +38,10 @@ metadata:
     app: che
     component: plugin-registry
   name: plugin-registry-plugins
-  namespace: sandbox
+  namespace: playgraound-dev
 spec:
   rules:
-  - host: keycloak-sandbox.api-hub-dev-d4b80535626182c66d855ee969650fc9-0006.us-south.containers.appdomain.cloud
+  - host: keycloak-playgraound-dev.api-hub-dev-d4b80535626182c66d855ee969650fc9-0006.us-south.containers.appdomain.cloud
     http:
       paths:
       - backend:

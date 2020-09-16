@@ -8,13 +8,15 @@ spec:
     tlsSecretName: ''
   server:
     cheImageTag: ''
+    proxyURL: "http://playground-dev-squid.kube-system"
+    proxyPort: '3128'
     devfileRegistryImage: 'us.icr.io/apihub-cr/che-devfile-registry:master-2020-09-16T12.18.30Z'
     devfileRegistryPullPolicy: 'Always'
     pluginRegistryImage: ''
     tlsSupport: true
     selfSignedCert: false
     customCheProperties:
-      CHE_INFRA_KUBERNETES_NAMESPACE_DEFAULT: "sandbox-ws-<userid>"
+      CHE_INFRA_KUBERNETES_NAMESPACE_DEFAULT: "playground-dev-ws-<userid>"
       CHE_WORKSPACE_STORAGE_AVAILABLE__TYPES: "ephemeral"
       CHE_WORKSPACE_STORAGE_PREFERRED__TYPE: "ephemeral"
       CHE_WORKSPACE_DEFAULTMEMORYLIMIT__MB: "2048"

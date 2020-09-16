@@ -1,33 +1,33 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: sandbox
+  name: playground-dev
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: sandbox
+  name: playground-dev
 subjects:
 - kind: ServiceAccount
   name: che
-  namespace: sandbox
+  namespace: playground-dev
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: sandbox-create-namespaces
+  name: playground-dev-create-namespaces
 roleRef:
   apiGroup: ""
   kind: ClusterRole
-  name: sandbox-create-namespaces
+  name: playground-dev-create-namespaces
 subjects:
 - kind: ServiceAccount
   name: che
-  namespace: sandbox
+  namespace: playground-dev
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: sandbox-create-namespaces
+  name: playground-dev-create-namespaces
   labels:
     app: che
     component: che
@@ -42,7 +42,7 @@ rules:
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: sandbox
+  name: playground-dev
   labels:
     app: che
     component: che
