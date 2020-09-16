@@ -1,0 +1,92 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pg-security-squid
+  namespace: kube-system
+spec:
+ selector:
+  app: squid
+ ports:
+  - protocol: TCP
+    port: 3128
+    targetPort: 3128
+    name: port3128
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-security-squid
+  namespace: kube-system
+  labels:
+    app: squid
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: squid
+  template:
+    metadata:
+      labels:
+        app: squid
+    spec:
+      containers:
+      - name: pg-security-squid
+        image: ubuntu
+        imagePullPolicy: Always
+        command: ["/bin/bash"]
+        livenessProbe:
+          exec:
+            command:
+              - "/bin/bash"
+              - "-c"
+              - "service squid status | grep -v not"
+          periodSeconds: 1
+        readinessProbe:
+          exec:
+            command:
+              - "/bin/bash"
+              - "-c"
+              - "service squid status | grep running"
+          periodSeconds: 5
+        startupProbe:
+          exec:
+            command:
+              - "/bin/bash"
+              - "-c"
+              - "service squid status | grep -v not"
+          failureThreshold: 10
+          periodSeconds: 50
+        args: ["-c", "echo \"$ENTRYPOINT\" > /entrypoint.sh; chmod 755 /entrypoint.sh; /entrypoint.sh"]
+        ports:
+          - containerPort: 3128
+        env:
+          - name: ENTRYPOINT
+            value: | #!/bin/bash
+              apt-get update
+              apt-get -y upgrade
+              DEBIAN_FRONTEND=noninteractive apt-get -y install tzdata
+              apt-get install -y squid
+              echo "acl GOOD dstdomain ${ALLOW_DOMAINS}" > /etc/squid/squid.conf
+              echo "http_access allow GOOD" >> /etc/squid/squid.conf
+              echo "acl SSL_ports port 443" >> /etc/squid/squid.conf
+              echo "acl Safe_ports port 80              # http" >> /etc/squid/squid.conf
+              echo "acl Safe_ports port 443             # https" >> /etc/squid/squid.conf
+              echo "acl CONNECT method CONNECT" >> /etc/squid/squid.conf
+              echo "http_access deny !Safe_ports" >> /etc/squid/squid.conf
+              echo "http_access deny CONNECT !SSL_ports" >> /etc/squid/squid.conf
+              echo "http_access allow localhost manager" >> /etc/squid/squid.conf
+              echo "http_access deny manager" >> /etc/squid/squid.conf
+              echo "include /etc/squid/conf.d/*" >> /etc/squid/squid.conf
+              echo "http_access allow localhost" >> /etc/squid/squid.conf
+              echo "http_access deny all" >> /etc/squid/squid.conf
+              echo "http_port 3128" >> /etc/squid/squid.conf
+              echo "coredump_dir /var/spool/squid" >> /etc/squid/squid.conf
+              echo "access_log /dev/stdout squid" >> /etc/squid/squid.conf
+              service squid stop
+              service squid start
+              trap "service squid stop; exit 0" INT TERM
+              while [ true ] ; do
+                sleep 1
+              done
+          - name: ALLOW_DOMAINS
+            value: .github.com .api.ibm.com .jboss.org
