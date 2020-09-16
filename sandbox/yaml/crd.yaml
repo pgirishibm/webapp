@@ -10,7 +10,7 @@ spec:
     cheImageTag: ''
     devfileRegistryImage: 'us.icr.io/apihub-cr/che-devfile-registry:master-2020-09-04T08.52.54Z'
     devfileRegistryPullPolicy: 'Always'
-    pluginRegistryImage: ''
+    pluginRegistryImage: 'us.icr.io/apihub-cr/che-plugin-registry:master-2020-09-15T17.12.44Z'
     tlsSupport: true
     selfSignedCert: false
     customCheProperties:
