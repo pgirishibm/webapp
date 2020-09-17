@@ -14,14 +14,13 @@ YAMLFILES=*.yaml
 for f in $YAMLFILES
 do
   echo " Deploying $f file in ${dict[$f]} namespace ..."
-  #OUTPUT=`kubectl apply -f $f -n ${dict[$f]}`
-  OUTPUT=" sample configured"
+  OUTPUT=`kubectl apply -f $f -n ${dict[$f]}`
   echo ${OUTPUT}
   if [[ "${OUTPUT}" == *"configured" ]] || [[ "${OUTPUT}" == *"unchanged" ]]
-        then
-			echo "Successfully applied the $f file in ${dict[$f]} namespace"
-		else
-		    echo "Failed to apply the $f file"
-			exit 1
+  then
+    echo "Successfully applied the $f file in ${dict[$f]} namespace"
+  else
+    echo "Failed to apply the $f file in ${dict[$f]} namespace"
+    exit 1
   fi
  done
