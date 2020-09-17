@@ -12,7 +12,7 @@ spec:
     proxyPort: '3128'
     devfileRegistryImage: 'us.icr.io/apihub-cr/che-devfile-registry:master-2020-09-16T12.18.30Z'
     devfileRegistryPullPolicy: 'Always'
-    pluginRegistryImage: 'us.icr.io/apihub-cr/che-plugin-registry:master-2020-09-16T13.53.03Z'
+    pluginRegistryImage: 'us.icr.io/apihub-cr/che-plugin-registry:master-2020-09-17T06.11.17Z'
     tlsSupport: true
     selfSignedCert: false
     customCheProperties:
