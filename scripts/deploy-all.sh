@@ -9,8 +9,6 @@ while IFS='=' read -r key value; do
     dict[$key]=$value
 done < ${WORKSPACE}/${ENV}/deployfile.txt
 
-echo "${dict[$f]}"
-
 cd ${ENV}/yaml
 YAMLFILES=*.yaml
 for f in $YAMLFILES
