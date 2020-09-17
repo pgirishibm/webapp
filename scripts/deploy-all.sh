@@ -11,7 +11,8 @@ done < ${WORKSPACE}/${ENV}/deployfile.txt
 
 echo "${dict[$f]}"
 
-YAMLFILES=${ENV}/yaml/*.yaml
+cd ${ENV}/yaml
+YAMLFILES=*.yaml
 for f in $YAMLFILES
 do
   echo " Deploying $f file in ${dict[$f]} namespace ..."
