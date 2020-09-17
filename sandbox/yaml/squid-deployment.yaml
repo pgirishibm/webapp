@@ -89,4 +89,4 @@ spec:
                 sleep 1
               done
           - name: ALLOW_DOMAINS
-            value: .github.com .api.ibm.com .jboss.org
+            value: .github.com .api.ibm.com .jboss.org .ibmcloud.com 
