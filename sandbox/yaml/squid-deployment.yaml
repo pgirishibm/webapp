@@ -35,28 +35,22 @@ spec:
         imagePullPolicy: Always
         command: ["/bin/bash"]
         livenessProbe:
-          exec:
-            command:
-              - "/bin/bash"
-              - "-c"
-              - "service squid status | grep -v not"
+          tcpSocket:
+            port: 3128
+          initialDelaySeconds: 60
           periodSeconds: 1
         readinessProbe:
-          exec:
-            command:
-              - "/bin/bash"
-              - "-c"
-              - "service squid status | grep running"
+          tcpSocket:
+            port: 3128
+          initialDelaySeconds: 60
           periodSeconds: 5
         startupProbe:
-          exec:
-            command:
-              - "/bin/bash"
-              - "-c"
-              - "service squid status | grep -v not"
+          tcpSocket:
+            port: 3128
+          initialDelaySeconds: 60
           failureThreshold: 10
           periodSeconds: 50
-        args: ["-c", "echo \"$ENTRYPOINT\" > /entrypoint.sh; chmod 755 /entrypoint.sh; /entrypoint.sh"]
+        args: ["-c", "echo \"$ENTRYPOINT\" > /entrypoint.sh; chmod 755 /entrypoint.sh; exec /entrypoint.sh"]
         ports:
           - containerPort: 3128
         env:
@@ -81,12 +75,12 @@ spec:
               echo "http_access deny all" >> /etc/squid/squid.conf
               echo "http_port 3128" >> /etc/squid/squid.conf
               echo "coredump_dir /var/spool/squid" >> /etc/squid/squid.conf
-              echo "access_log /dev/stdout squid" >> /etc/squid/squid.conf
+              echo "#access_log /dev/stdout squid" >> /etc/squid/squid.conf
               service squid stop
               service squid start
-              trap "service squid stop; exit 0" INT TERM
               while [ true ] ; do
                 sleep 1
               done
+              #exec /usr/sbin/squid -YC --foreground -f /etc/squid/squid.conf
           - name: ALLOW_DOMAINS
-            value: .github.com .api.ibm.com .jboss.org .ibmcloud.com 
+            value: .github.com .api.ibm.com .jboss.org .ibmcloud.com .api-hub-dev-d4b80535626182c66d855ee969650fc9-0006.us-south.containers.appdomain.cloud dc.services.visualstudio.com .github.ibm.com json.schemastore.org .schemastore.azurewebsites.net registry.npmjs.org vortex.data.microsoft.com
