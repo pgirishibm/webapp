@@ -1,0 +1,6 @@
+crd.yaml=playground-dev
+env-secret.yaml=playground-dev
+ingress-keycloak.yaml=playground-dev
+ingress-plugin-registry.yaml=playground-dev
+namespaces.yaml=playground-dev
+squid-deployment.yaml=kube-system
