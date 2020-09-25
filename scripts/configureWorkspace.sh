@@ -101,146 +101,146 @@ spec:
 ##########################
 ### Setup role bindings
 ##########################
-echo "
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: $WORKSPACE
-  namespace: $WORKSPACE
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: $WORKSPACE
-subjects:
-- kind: ServiceAccount
-  name: che-workspace
-  namespace: $WORKSPACE
----
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: $WORKSPACE
-  namespace: $WORKSPACE
-  labels:
-    app: che
-    component: che
-rules:
-  - verbs:
-      - get
-      - update
-      - create
-    apiGroups:
-      - rbac.authorization.k8s.io
-    resources:
-      - rolebindings
-  - verbs:
-      - get
-      - create
-      - watch
-    apiGroups:
-      - ''
-    resources:
-      - serviceaccounts
-  - verbs:
-      - create
-    apiGroups:
-      - ''
-    resources:
-      - pods/exec
-  - verbs:
-      - list
-    apiGroups:
-      - ''
-    resources:
-      - persistentvolumeclaims
-      - configmaps
-  - verbs:
-      - list
-    apiGroups:
-      - apps
-    resources:
-      - secrets
-  - verbs:
-      - list
-      - create
-      - delete
-    apiGroups:
-      - ''
-    resources:
-      - secrets
-  - verbs:
-      - create
-      - get
-      - watch
-    apiGroups:
-      - ''
-    resources:
-      - persistentvolumeclaims
-  - verbs:
-      - get
-      - list
-      - create
-      - watch
-      - delete
-    apiGroups:
-      - ''
-    resources:
-      - pods
-  - verbs:
-      - get
-      - list
-      - create
-      - patch
-      - watch
-      - delete
-    apiGroups:
-      - apps
-    resources:
-      - deployments
-  - verbs:
-      - list
-      - create
-      - delete
-    apiGroups:
-      - ''
-    resources:
-      - services
-  - verbs:
-      - create
-      - delete
-    apiGroups:
-      - ''
-    resources:
-      - configmaps
-  - verbs:
-      - watch
-    apiGroups:
-      - ''
-    resources:
-      - events
-  - verbs:
-      - list
-      - get
-      - patch
-      - delete
-    apiGroups:
-      - apps
-    resources:
-      - replicasets
-  - apiGroups:
-      - extensions
-    resources:
-      - ingresses
-    verbs:
-      - list
-      - create
-      - watch
-      - get
-      - delete
-  - apiGroups:
-      - ''
-    resources:
-      - namespaces
-    verbs:
-      - get
-" | kubectl apply -f -
+#echo "
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: RoleBinding
+#metadata:
+#  name: $WORKSPACE
+#  namespace: $WORKSPACE
+#roleRef:
+#  apiGroup: rbac.authorization.k8s.io
+#  kind: Role
+#  name: $WORKSPACE
+#subjects:
+#- kind: ServiceAccount
+#  name: che-workspace
+#  namespace: $WORKSPACE
+#---
+#kind: Role
+#apiVersion: rbac.authorization.k8s.io/v1
+#metadata:
+#  name: $WORKSPACE
+#  namespace: $WORKSPACE
+#  labels:
+#    app: che
+#    component: che
+#rules:
+#  - verbs:
+#      - get
+#      - update
+#      - create
+#    apiGroups:
+#      - rbac.authorization.k8s.io
+#    resources:
+#      - rolebindings
+#  - verbs:
+#      - get
+#      - create
+#      - watch
+#    apiGroups:
+#      - ''
+#    resources:
+#      - serviceaccounts
+#  - verbs:
+#      - create
+#    apiGroups:
+#      - ''
+#    resources:
+#      - pods/exec
+#  - verbs:
+#      - list
+#    apiGroups:
+#      - ''
+#    resources:
+#      - persistentvolumeclaims
+#      - configmaps
+#  - verbs:
+#      - list
+#    apiGroups:
+#      - apps
+#    resources:
+#      - secrets
+#  - verbs:
+#      - list
+#      - create
+#      - delete
+#    apiGroups:
+#      - ''
+#    resources:
+#      - secrets
+#  - verbs:
+#      - create
+#      - get
+#      - watch
+#    apiGroups:
+#      - ''
+#    resources:
+#      - persistentvolumeclaims
+#  - verbs:
+#      - get
+#      - list
+#      - create
+#      - watch
+#      - delete
+#    apiGroups:
+#      - ''
+#    resources:
+#      - pods
+#  - verbs:
+#      - get
+#      - list
+#      - create
+#      - patch
+#      - watch
+#      - delete
+#    apiGroups:
+#      - apps
+#    resources:
+#      - deployments
+#  - verbs:
+#      - list
+#      - create
+#      - delete
+#    apiGroups:
+#      - ''
+#    resources:
+#      - services
+#  - verbs:
+#      - create
+#      - delete
+#    apiGroups:
+#      - ''
+#    resources:
+#      - configmaps
+#  - verbs:
+#      - watch
+#    apiGroups:
+#      - ''
+#    resources:
+#      - events
+#  - verbs:
+#      - list
+#      - get
+#      - patch
+#      - delete
+#    apiGroups:
+#      - apps
+#    resources:
+#      - replicasets
+#  - apiGroups:
+#      - extensions
+#    resources:
+#      - ingresses
+#    verbs:
+#      - list
+#      - create
+#      - watch
+#      - get
+#      - delete
+#  - apiGroups:
+#      - ''
+#    resources:
+#      - namespaces
+#    verbs:
+#      - get
+#" | kubectl apply -f -
