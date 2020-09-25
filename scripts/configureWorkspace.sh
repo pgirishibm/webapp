@@ -59,27 +59,7 @@ echo "
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: dns
-  namespace: $WORKSPACE
-spec:
-  podSelector: {}
-  policyTypes:
-  - Egress
-  egress:
-    - to:
-      - namespaceSelector:
-          matchLabels:
-             name: kube-system
-      ports:
-      - protocol: TCP
-        port: 53
-      - protocol: UDP
-        port: 53
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: squid
+  name: dns-squid
   namespace: $WORKSPACE
 spec:
   podSelector: {}
@@ -93,6 +73,10 @@ spec:
       ports:
       - protocol: TCP
         port: 3128
+      - protocol: TCP
+        port: 53
+      - protocol: UDP
+        port: 53
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -112,29 +96,6 @@ spec:
           cidr: 172.21.0.0/16
       - ipBlock:
           cidr: 172.20.0.0/16
----
-# This is needed to get the terminal to start up in the browser
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: etcd
-  namespace: $WORKSPACE
-spec:
-  podSelector: {}
-  policyTypes:
-  - Egress
-  egress:
-    - to:
-      - namespaceSelector:
-          matchLabels:
-             name: $WORKSPACE
-      - ipBlock:
-          cidr: 172.20.0.0/24
-#      - ipBlock:
-#          cidr: 0.0.0.0/0
-      ports:
-      - protocol: TCP
-        port: 2041
 " | kubectl apply -f -
 
 ##########################
