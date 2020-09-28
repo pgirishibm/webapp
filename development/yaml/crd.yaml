@@ -9,7 +9,7 @@ spec:
   server:
     cheImageTag: ''
     devfileRegistryImage: 'us.icr.io/apihub-cr/che-devfile-registry:latest'
-    pluginRegistryImage: 'us.icr.io/apihub-cr/che-plugin-registry:master-2020-09-17T06.11.17Z'
+    pluginRegistryImage: 'us.icr.io/apihub-cr/che-plugin-registry:master-2020-09-28T08.51.43Z'
     tlsSupport: true
     selfSignedCert: false
     customCheProperties:
