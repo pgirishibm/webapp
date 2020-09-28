@@ -89,5 +89,5 @@ spec:
                    json.schemastore.org
                    .schemastore.azurewebsites.net
                    registry.npmjs.org vortex.data.microsoft.com
-
+                   172.21.0.1
 
